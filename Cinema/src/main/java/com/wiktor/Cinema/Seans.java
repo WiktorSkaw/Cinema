@@ -10,6 +10,8 @@ public class Seans {
     private Integer id;
     public Date time;
     public Seats[][] seats;
+    @ManyToOne
+    public Film film;
 
     public Integer getId() {
         return id;
@@ -43,8 +45,7 @@ public class Seans {
         this.film = film;
     }
 
-    @ManyToOne
-    public Film film;
+
 
     Seans(){
         seats = new Seats[7][7];

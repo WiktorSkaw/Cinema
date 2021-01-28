@@ -6,5 +6,10 @@
 </head>
 <body>
 <p th:text="${message}"></p>
+<form action="/CreateClient">
+    <label for="name">Name:</label><br>
+    <input type="text" id="name" name="name"><br>
+    <input type="submit" value="Submit">
+</form>
 </body>
 </html>

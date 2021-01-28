@@ -7,21 +7,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-
 public class ClientController {
 
     @Autowired
     private ClientRepository userRepository;
     @RequestMapping(path="/CreateClient")
-   public String createClient(@RequestParam String name, Model model){
+   public String createClient(@RequestParam(required = false) String name, Model model) {
+        if (name != null) {
+            Client client = new Client();
+            client.setName(name);
 
-        Client client = new Client();
-        client.setName(name);
+            userRepository.save(client); //klient zostaje zapisany w bazie
 
-        userRepository.save(client); //klient zostaje zapisany w bazie
-
-        model.addAttribute("message","User Created " + name);
-
-        return "client";
+            model.addAttribute("message", "User Created " + name);
+        }
+            return "client";
     }
 }
