@@ -7,7 +7,7 @@ import java.util.List;
 public class Film {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy= GenerationType.AUTO) // automatycznie dobiera strategie wybierania indentyfikatora
     private Integer id;
 
     @OneToMany
@@ -16,9 +16,7 @@ public class Film {
     String name;
 
 
-    public Integer getId() {
-        return id;
-    }
+    public Integer getId() { return id; }
 
     public List<Seans> getSeans() {
         return seans;
@@ -40,8 +38,7 @@ public class Film {
         this.name = name;
     }
 
-    Film(){
-    }
+    Film(){}
 
     public void main(String[] arg){
 
