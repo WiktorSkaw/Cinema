@@ -8,6 +8,32 @@
     </style>
 </head>
 <body>
+<form action="/">
+    <select name="filmID" onchange='this.form.submit()'>
+        <option>Wybierz film:</option>
+        <option th:each="film : ${allFilms}" th:value="${film.id}" th:text="${film.name}" th:selected="${film.id} eq ${filmID}"></option>
+    </select>
 
+    <select name="seansID" onchange='this.form.submit()'>
+        <option>Wybierz seans:</option>
+        <option th:each="seans : ${allSeans}" th:value="${seans.id}" th:text="${seans.time}" th:selected="${seans.id} eq ${seansID}"></option>
+    </select>
+
+    <table><tr th:each="row,rowStat : ${seats}"><td th:text="${rowStat.index}"></td>
+        <th:block th:each="seat,seatStat : ${row}">
+            <th:block th:if="${!seat}">
+                <td th:inline="text" style="background-color:#FF0000">
+                    <a th:href="@{/(seansID=${seansID},rowID=${rowStat.index},seatID=${seatStat.index})}" th:text="${seatStat.index}"></a>
+                </td>
+            </th:block>
+            <th:block th:unless="${!seat}">
+                <td th:inline="text" style="background-color:#00FF00">
+            <a th:href="@{/(seansID=${seansID},rowID=${rowStat.index},seatID=${seatStat.index})}" th:text="${seatStat.index}"></a>
+        </td>
+        </th:block>
+        </th:block>
+    </tr>
+    </table>
+</form>
 </body>
 </html>

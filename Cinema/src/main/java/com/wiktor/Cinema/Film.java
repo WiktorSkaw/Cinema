@@ -10,7 +10,7 @@ public class Film {
     @GeneratedValue(strategy= GenerationType.AUTO) // automatycznie dobiera strategie wybierania indentyfikatora
     private Integer id;
 
-    @OneToMany
+    @OneToMany //jeden film moze miec wiele seansow
     List<Seans> seans;
 
     String name;
