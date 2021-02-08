@@ -9,6 +9,7 @@
 </head>
 <body>
 <form action="/">
+
     <select name="filmID" onchange='this.form.submit()'>
         <option>Wybierz film:</option>
         <option th:each="film : ${allFilms}" th:value="${film.id}" th:text="${film.name}" th:selected="${film.id} eq ${filmID}"></option>
@@ -21,19 +22,26 @@
 
     <table><tr th:each="row,rowStat : ${seats}"><td th:text="${rowStat.index}"></td>
         <th:block th:each="seat,seatStat : ${row}">
-            <th:block th:if="${!seat}">
+            <th:block th:if="${seat} != 0">
                 <td th:inline="text" style="background-color:#FF0000">
                     <a th:href="@{/(seansID=${seansID},rowID=${rowStat.index},seatID=${seatStat.index})}" th:text="${seatStat.index}"></a>
                 </td>
             </th:block>
-            <th:block th:unless="${!seat}">
+            <th:block th:if="${seat} == 0">
                 <td th:inline="text" style="background-color:#00FF00">
-            <a th:href="@{/(seansID=${seansID},rowID=${rowStat.index},seatID=${seatStat.index})}" th:text="${seatStat.index}"></a>
+            <a th:href="@{/(filmID=${filmID},seansID=${seansID},rowID=${rowStat.index},seatID=${seatStat.index})}" th:text="${seatStat.index}"></a>
         </td>
         </th:block>
         </th:block>
     </tr>
     </table>
+    <th:block th:if="${seatID} != null">
+        <input type="hidden" name="rowID" th:value="${rowID}">
+        <input type="hidden" name="seatID" th:value="${seatID}">
+        <label for="name">Name:</label><br>
+        <input type="text" id="name" name="clientName"><br>
+        <input type="submit" value="Submit">
+    </th:block>
 </form>
 </body>
 </html>

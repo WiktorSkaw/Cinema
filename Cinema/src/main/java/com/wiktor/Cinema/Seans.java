@@ -9,7 +9,7 @@ public class Seans {
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Integer id;
     public Date time;
-    public boolean[][] seats;
+    public Integer[][] seats; //zawiera ID kilenta, gdy 0 miejsce wolne
     @ManyToOne //wiele seansow do jednego filmu
     public Film film;
 
@@ -21,7 +21,7 @@ public class Seans {
         return time;
     }
 
-    public boolean[][] getSeats() {
+    public Integer[][] getSeats() {
         return seats;
     }
 
@@ -37,7 +37,7 @@ public class Seans {
         this.time = time;
     }
 
-    public void setSeats(boolean[][] seats) {
+    public void setSeats(Integer[][] seats) {
         this.seats = seats;
     }
 
@@ -48,10 +48,10 @@ public class Seans {
 
 
     Seans(){
-        seats = new boolean[7][7];
+        seats = new Integer[7][7];
         for(int i=0; i<7; i++){
             for(int j=0; j<7; j++){
-                seats[i][j] = true;
+                seats[i][j] = 0;
             }
         }
     }
