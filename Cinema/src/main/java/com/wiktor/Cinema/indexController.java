@@ -20,7 +20,7 @@ public class indexController {
     @Autowired
     private ClientRepository clientRepository;
 
-    @RequestMapping(path="/") //mapowanie żądań webowych na metody Spring Controller
+    @RequestMapping(path="/")
     public String indexControll(Model model, @RequestParam(required = false) String filmID,@RequestParam(required = false) String seansID,@RequestParam(required = false) String rowID,@RequestParam(required = false) String seatID,@RequestParam(required = false) String clientName){ //musimy podac model w parametrach, inne parametry nie sa wymagane
 
 
@@ -30,7 +30,7 @@ public class indexController {
 
         if(filmID != null){
             try {
-                int filmIDInt = Integer.parseInt(filmID); //zamiana string na int
+                int filmIDInt = Integer.parseInt(filmID);
                 Film film = filmRepository.findById(filmIDInt).orElseThrow(() -> new Exception("Film not found"));
                 List<Seans> allSeans = seansRepository.findSeansByFilm(film); //seanse dla danego filmu (List<Seans>)
                 model.addAttribute("filmID", filmID);

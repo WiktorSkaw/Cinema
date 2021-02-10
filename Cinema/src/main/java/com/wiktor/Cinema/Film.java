@@ -7,10 +7,10 @@ import java.util.List;
 public class Film {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO) // automatycznie dobiera strategie wybierania indentyfikatora
+    @GeneratedValue(strategy= GenerationType.AUTO)
     private Integer id;
 
-    @OneToMany //jeden film moze miec wiele seansow
+    @OneToMany
     List<Seans> seans;
 
     String name;

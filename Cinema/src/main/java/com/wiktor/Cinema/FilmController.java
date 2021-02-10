@@ -18,7 +18,7 @@ public class FilmController {
             Film film = new Film();
             film.setName(name);
 
-            filmRepository.save(film); //film zostaje zapisany w bazie
+            filmRepository.save(film);
 
             model.addAttribute("message", "Film Created ");
         }

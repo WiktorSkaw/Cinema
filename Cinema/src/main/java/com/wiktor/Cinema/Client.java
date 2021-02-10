@@ -5,11 +5,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-@Entity //adnotacja encji, klasa ktora ma byc mapowana
+@Entity
 public class Client {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO) //strategia indeksowania
+    @GeneratedValue(strategy= GenerationType.AUTO)
     private Integer id;
 
     String name;

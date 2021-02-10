@@ -9,8 +9,8 @@ public class Seans {
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Integer id;
     public Date time;
-    public Integer[][] seats; //zawiera ID kilenta, gdy 0 miejsce wolne
-    @ManyToOne //wiele seansow do jednego filmu
+    public Integer[][] seats;
+    @ManyToOne
     public Film film;
 
     public Integer getId() {

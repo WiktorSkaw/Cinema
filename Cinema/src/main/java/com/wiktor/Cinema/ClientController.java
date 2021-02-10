@@ -17,7 +17,7 @@ public class ClientController {
             Client client = new Client();
             client.setName(name);
 
-            userRepository.save(client); //klient zostaje zapisany w bazie
+            userRepository.save(client);
 
             model.addAttribute("message", "User Created " + name);
         }
